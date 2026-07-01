@@ -1,8 +1,8 @@
 resource "aws_vpc" "eks_vpc" {
 
-  cidr_block           = local.vpc_cidr
+  cidr_block = local.vpc_cidr
 
-  enable_dns_support   = true
+  enable_dns_support = true
 
   enable_dns_hostnames = true
 
@@ -25,11 +25,11 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_subnet" "public_subnet_1" {
 
-  vpc_id                  = aws_vpc.eks_vpc.id
+  vpc_id = aws_vpc.eks_vpc.id
 
-  cidr_block              = local.public_subnets[0]
+  cidr_block = local.public_subnets[0]
 
-  availability_zone       = local.availability_zones[0]
+  availability_zone = local.availability_zones[0]
 
   map_public_ip_on_launch = true
 
@@ -45,11 +45,11 @@ resource "aws_subnet" "public_subnet_1" {
 
 resource "aws_subnet" "public_subnet_2" {
 
-  vpc_id                  = aws_vpc.eks_vpc.id
+  vpc_id = aws_vpc.eks_vpc.id
 
-  cidr_block              = local.public_subnets[1]
+  cidr_block = local.public_subnets[1]
 
-  availability_zone       = local.availability_zones[1]
+  availability_zone = local.availability_zones[1]
 
   map_public_ip_on_launch = true
 
@@ -98,7 +98,7 @@ resource "aws_route_table_association" "public_subnet_2_assoc" {
 }
 resource "aws_security_group" "eks_cluster_sg" {
 
-  name        = "${local.project_name}-cluster-sg"
+  name = "${local.project_name}-cluster-sg"
 
   description = "Security Group for EKS Cluster"
 

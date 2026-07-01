@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "main" {
 
-  name     = "${local.project_name}-cluster"
+  name = "${local.project_name}-cluster"
 
   role_arn = aws_iam_role.eks_cluster_role.arn
 
@@ -10,12 +10,12 @@ resource "aws_eks_cluster" "main" {
 
     subnet_ids = [
 
-  aws_subnet.public_subnet_1.id,
-  aws_subnet.public_subnet_2.id,
-  aws_subnet.private_subnet_1.id,
-  aws_subnet.private_subnet_2.id
+      aws_subnet.public_subnet_1.id,
+      aws_subnet.public_subnet_2.id,
+      aws_subnet.private_subnet_1.id,
+      aws_subnet.private_subnet_2.id
 
-   ]
+    ]
 
     security_group_ids = [
 
@@ -53,8 +53,8 @@ resource "aws_eks_node_group" "main" {
 
   subnet_ids = [
 
-  aws_subnet.private_subnet_1.id,
-  aws_subnet.private_subnet_2.id
+    aws_subnet.private_subnet_1.id,
+    aws_subnet.private_subnet_2.id
 
   ]
 
