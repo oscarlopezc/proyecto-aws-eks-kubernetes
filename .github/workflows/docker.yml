@@ -1,0 +1,29 @@
+name: Docker CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  docker:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Backend Image
+        run: |
+          docker build \
+          -t proyecto-aws-eks-backend:v1 \
+          ./app/backend
+
+      - name: Build Frontend Image
+        run: |
+          docker build \
+          -t proyecto-aws-eks-frontend:v1 \
+          ./app/frontend
